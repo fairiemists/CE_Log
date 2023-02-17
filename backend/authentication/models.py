@@ -4,9 +4,9 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
 
-    ptin = models.CharField(max_length=10, null=True)
-    is_manager = models.BooleanField(default=False)
-    manager_id = models.IntegerField(null=True)
+    ptin = models.CharField(max_length=10, null=True, verbose_name='PTIN')
+    is_manager = models.BooleanField(default=False, verbose_name='Manager')
+    manager_id = models.IntegerField(null=True, verbose_name='Manager Name')
 
     pass
     '''
