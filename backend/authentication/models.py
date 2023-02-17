@@ -1,8 +1,13 @@
-# from django.db import models
+from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+
+    ptin = models.CharField(max_length=10, null=True)
+    is_manager = models.BooleanField(default=False)
+    manager_id = models.IntegerField(null=True)
+
     pass
     '''
     This is a custom version of the built in User class
