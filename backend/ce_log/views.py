@@ -40,6 +40,16 @@ def user_credit(request, pk):
     elif request.method == 'DELETE':
         credit.delete()
         return Response (status=status.HTTP_204_NO_CONTENT)
+    
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def employee_credits(request):
+
+    if request.method == 'GET':
+        credits = Credit.objects.all()
+        serializer = CreditSerializer(credits, many=True)
+        return Response(serializer.data)
 
 
 
