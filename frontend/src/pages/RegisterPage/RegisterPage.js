@@ -34,7 +34,7 @@ const RegisterPage = () => {
         <label>
           Password:{" "}
           <input
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
@@ -44,6 +44,7 @@ const RegisterPage = () => {
           NOTE: Make this an uncommon password with characters, numbers, and
           special characters!
         </p>     
+        <br></br>
         <label>
           First Name:{" "}
           <input
@@ -65,7 +66,7 @@ const RegisterPage = () => {
         <label>
           Email:{" "}
           <input
-            type="text"
+            type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
@@ -88,7 +89,8 @@ const RegisterPage = () => {
             value={formData.is_manager}
             onChange={handleInputChange}
           />
-        </label>             
+        </label>  
+        <br></br>           
         <button>Register!</button>
       </form>
     </div>
