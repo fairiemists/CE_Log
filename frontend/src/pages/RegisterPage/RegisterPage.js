@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 
+
 const RegisterPage = () => {
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
@@ -10,6 +11,8 @@ const RegisterPage = () => {
     password: "",
     firstName: "",
     lastName: "",
+    ptin: "",
+    is_manager: ""
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,
@@ -28,6 +31,19 @@ const RegisterPage = () => {
             onChange={handleInputChange}
           />
         </label>
+        <label>
+          Password:{" "}
+          <input
+            type="text"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </label>
+        <p style={{ fontSize: "12px" }}>
+          NOTE: Make this an uncommon password with characters, numbers, and
+          special characters!
+        </p>     
         <label>
           First Name:{" "}
           <input
@@ -56,18 +72,23 @@ const RegisterPage = () => {
           />
         </label>
         <label>
-          Password:{" "}
+          PTIN:{" "}
           <input
             type="text"
-            name="password"
-            value={formData.password}
+            name="ptin"
+            value={formData.ptin}
             onChange={handleInputChange}
           />
-        </label>
-        <p style={{ fontSize: "12px" }}>
-          NOTE: Make this an uncommon password with characters, numbers, and
-          special characters!
-        </p>
+        </label>      
+        <label>
+          Managers check here{" "}
+          <input
+            type="checkbox"
+            name="is_manager"
+            value={formData.is_manager}
+            onChange={handleInputChange}
+          />
+        </label>             
         <button>Register!</button>
       </form>
     </div>
