@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+
 import useAuth from '../../hooks/useAuth';
+import ManagerCourses from '../../components/ManagerCourses/ManagerCourses';
+import SearchCourses from '../../components/SearchCourses/SearchCourses';
 
 
 const ManagerPage = () => {
 
     const [user, token] = useAuth();
     const [courses, setCourses] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    
     console.log(user);
     console.log(token);
 
@@ -28,11 +32,13 @@ const ManagerPage = () => {
     }, [token] );
 
 
-
     return ( 
         <div className='container'>
             <h1>Welcome {user.first_name} {user.last_name}</h1>
+            <SearchCourses input = {searchTerm} setInput = {setSearchTerm}/>
+            <ManagerCourses courses = {courses} input = {searchTerm} user = {user}/>      
         </div>
+
      );
 }
  
