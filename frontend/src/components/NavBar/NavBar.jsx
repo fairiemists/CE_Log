@@ -13,6 +13,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <img src="../Assets/IRS_logo.png" alt="IRS Logo" className="irs_logo"/>
             <b>React/Django JWT</b>
           </Link>
         </li>
