@@ -27,11 +27,38 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              {/* boolean            True            False*/}
-              {user.is_manager ? <ManagerPage/> : <AgentPage/>}
+              <HomePage/>
             </PrivateRoute>
           }
         />
+        {/* {if 
+          user.is_manager = False
+          <Route
+          path="/agent"
+          element={
+            <PrivateRoute>
+              <AgentPage/>
+            </PrivateRoute>            
+          }  />
+        else 
+          <Route
+          path="/manager"
+          element={
+            <PrivateRoute>
+              <ManagerPage/>
+            </PrivateRoute>
+          }
+          />          
+        } */}
+        {/* <Route
+          path="/"
+          element={
+            <PrivateRoute> */}
+              {/* boolean            True            False*/}
+              {/* {user.is_manager ? <ManagerPage/> : <AgentPage/>}
+            </PrivateRoute>
+          }
+        /> */}
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />   
       </Routes>
