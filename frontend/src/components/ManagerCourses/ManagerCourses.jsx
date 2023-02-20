@@ -22,8 +22,8 @@ const ManagerCourses = ({courses, input, user}) => {
             <table>
                 <thead>
                     <tr>
-                        {/* <th>First Name</th>                        
-                        <th>Last Name</th> */}
+                        <th>First Name</th>                        
+                        <th>Last Name</th>
                         <th>Course Name</th>
                         <th>Date</th>
                         <th>Cost</th>
@@ -36,8 +36,8 @@ const ManagerCourses = ({courses, input, user}) => {
                 <tbody>
                     {courses
                     .filter(course => 
-                        // course.ee_first_name.toLowerCase().includes(input.toLowerCase()) ||
-                        // course.ee_last_name.toLowerCase().includes(input.toLowerCase()) ||
+                        course.agent_first_name.toLowerCase().includes(input.toLowerCase()) ||
+                        course.agent_last_name.toLowerCase().includes(input.toLowerCase()) ||
                         course.course_name.toLowerCase().includes(input.toLowerCase()) ||
                         course.course_date.toLowerCase().includes(input.toLowerCase()) ||
                         course.cost.toLowerCase().includes(input.toLowerCase()) ||
@@ -48,8 +48,8 @@ const ManagerCourses = ({courses, input, user}) => {
                     .map((course) => {
                         return (
                         <tr key={course.id}>
-                            {/* <td>{course.ee_first_name}</td>
-                            <td>{course.ee_last_name}</td> */}
+                            <td>{course.agent_first_name}</td>
+                            <td>{course.agent_last_name}</td>
                             <td>{course.course_name}</td>
                             <td>{course.course_date}</td>
                             <td>{course.cost}</td>
