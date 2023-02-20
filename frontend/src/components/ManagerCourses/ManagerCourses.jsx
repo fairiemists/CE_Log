@@ -1,7 +1,20 @@
+import { useState } from "react";
 
 
 
 const ManagerCourses = ({courses, input, user}) => {
+
+    // const [requiredCompleted, setRequiredCompleted] = useState(e);
+    // const [totalEthics, setTotalEthics] = useState(e);
+    // const [requiredRemaining, setRequiredRemaining] = useState(e);
+
+    // function sumTotalRequired(){
+
+    // }
+
+    // function calcRequiredRemaining(){
+    //     setRequiredRemaining(16 - requiredCompleted);
+    // }
 
 
     return ( 
@@ -59,7 +72,9 @@ const ManagerCourses = ({courses, input, user}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    {/* <output>{requiredCompleted}</output>
+                    <output>{requiredRemaining}</output>
+                    <output>{totalEthics}</output> */}
                 </tbody>
             </table>    
         </div>

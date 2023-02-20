@@ -15,8 +15,10 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import useAuth from "./hooks/useAuth";
 
 function App() {
+  const [user,token] =useAuth()
   return (
     <div>
       <Navbar />
@@ -25,16 +27,15 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              {/* boolean            True            False*/}
+              {user.is_manager ? <ManagerPage/> : <AgentPage/>}
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/agent" element={<PrivateRoute><AgentPage/></PrivateRoute>}/>
-        <Route path="/manager" element={<PrivateRoute><ManagerPage/></PrivateRoute>}/>    
+        <Route path="/login" element={<LoginPage />} />   
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

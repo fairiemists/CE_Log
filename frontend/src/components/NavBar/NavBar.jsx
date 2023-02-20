@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import IRS from '../../Assets/IRS_logo.png'
 
 
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <img src="../Assets/IRS_logo.png" alt="IRS Logo" className="irs_logo"/>
+            <img src={IRS} alt="IRS Logo" className="irs_logo"/>
             <b>React/Django JWT</b>
           </Link>
         </li>

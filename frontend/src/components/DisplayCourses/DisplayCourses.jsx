@@ -48,7 +48,7 @@ const DisplayCourses = ({courses, input}) => {
                             <td>
                                 <button type='button'
                                     onClick={deleteCourse()}
-                                    className='class="btn btn-danger'>
+                                    className='btn btn-danger'>
                                 <i className="fa fa-trash"></i>
                                 </button>
                             </td>
