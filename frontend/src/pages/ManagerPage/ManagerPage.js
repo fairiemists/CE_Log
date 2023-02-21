@@ -12,8 +12,7 @@ const ManagerPage = () => {
     const [courses, setCourses] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     
-    console.log(user);
-    console.log(token);
+
 
     useEffect(() => {
         const fetchCourses = async () =>{

@@ -12,7 +12,7 @@ const RegisterPage = () => {
     firstName: "",
     lastName: "",
     ptin: "",
-    is_manager: ""
+    is_manager: false
   };
   const [formData, handleInputChange, handleSubmit] = useCustomForm(
     defaultValues,

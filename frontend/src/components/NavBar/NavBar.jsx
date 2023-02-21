@@ -15,7 +15,7 @@ const Navbar = () => {
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <img src={IRS} alt="IRS Logo" className="irs_logo"/>
-            <b>React/Django JWT</b>
+            <b> CE Log</b>
           </Link>
         </li>
         <li>

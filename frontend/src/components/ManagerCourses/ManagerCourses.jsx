@@ -1,20 +1,7 @@
-import { useState } from "react";
 
 
 
-const ManagerCourses = ({courses, input, user}) => {
-
-    // const [requiredCompleted, setRequiredCompleted] = useState(e);
-    // const [totalEthics, setTotalEthics] = useState(e);
-    // const [requiredRemaining, setRequiredRemaining] = useState(e);
-
-    // function sumTotalRequired(){
-
-    // }
-
-    // function calcRequiredRemaining(){
-    //     setRequiredRemaining(16 - requiredCompleted);
-    // }
+const ManagerCourses = ({courses, input}) => {
 
 
     return ( 
@@ -30,7 +17,6 @@ const ManagerCourses = ({courses, input, user}) => {
                         <th>Credits</th>
                         <th>Ethics</th>
                         <th>Certificate</th>
-                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,21 +48,6 @@ const ManagerCourses = ({courses, input, user}) => {
 
                 </tbody>
             </table>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Required Completed</th>
-                        <th>Required Remaining</th>
-                        <th>Ethics Remaining</th>
-                        <th>Optional Completed</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* <output>{requiredCompleted}</output>
-                    <output>{requiredRemaining}</output>
-                    <output>{totalEthics}</output> */}
-                </tbody>
-            </table>    
         </div>
      );
 }

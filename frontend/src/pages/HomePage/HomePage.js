@@ -27,6 +27,7 @@ const HomePage = () => {
     fetchCredits();
   }, [token]);
   return (
+
     <div className="container">
       <h1>Welcome {user.first_name} {user.last_name}!</h1>
 

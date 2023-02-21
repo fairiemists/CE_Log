@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const registerUser = async (registerData) => {
+    console.log(registerData.is_manager)
     try {
       let finalData = {
         username: registerData.username,
@@ -37,6 +38,8 @@ export const AuthProvider = ({ children }) => {
         email: registerData.email,
         first_name: registerData.firstName,
         last_name: registerData.lastName,
+        ptin: registerData.ptin,
+        is_manager: registerData.is_manager
       };
       let response = await axios.post(`${BASE_URL}/register/`, finalData);
       if (response.status === 201) {
