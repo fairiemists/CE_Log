@@ -44,9 +44,9 @@ const CreditTotals = ({courses}) => {
             </tr>
         </thead>
         <tbody>
-          {courses
+          {/* {courses
           .filter(course =>
-            course.user_id 
+            course.user_id === current_displayed_agent
           )
           .reduce((prevValue, currentValue) => 
             prevValue + currentValue.course, 0
@@ -58,11 +58,12 @@ const CreditTotals = ({courses}) => {
 
             </tr>
             );
-          })}
-            // {/* <output>{requiredCompleted}</output>
-            // <output>{requiredRemaining}</output>
-            // <output>{totalEthics}</output>
-            // <output>{totalOptional}</output> */}
+          })
+          } */}
+            {/* <output>{requiredCompleted}</output>
+            <output>{requiredRemaining}</output>
+            <output>{totalEthics}</output>
+            <output>{totalOptional}</output> */}
     //     </tbody>
     // </table>    
 

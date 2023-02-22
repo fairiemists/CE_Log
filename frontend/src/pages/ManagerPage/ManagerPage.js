@@ -17,7 +17,8 @@ const ManagerPage = () => {
     useEffect(() => {
         const fetchCourses = async () =>{
             try {
-                let response = await axios.get("http://127.0.0.1:8000/api/ce_log/manager/", {
+                let response = await axios.get("http://127.0.0.1:8000/api/ce_log/manager/", 
+                {
                     headers: {
                         Authorization: "Bearer " + token,
                     },

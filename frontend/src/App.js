@@ -33,6 +33,8 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />   
+        {/* <Route path="/agent" element={<AgentPage/>}/>
+        <Route path="/manager" element={<ManagerPage/>}/> */}
       </Routes>
       {/* <Footer /> */}
     </div>

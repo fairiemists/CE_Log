@@ -7,8 +7,10 @@ import axios from "axios";
 
 const DisplayCourses = ({courses, input}) => {
 
+    let id = courses.id
+
     async function deleteCourse(){
-        const response = await axios.delete('http://127.0.0.1:8000/api/music/:id/');
+        const response = await axios.delete(`http://127.0.0.1:8000/api/ce_log/${id}/`);
         console.log(response.data);
     }
 
@@ -47,7 +49,7 @@ const DisplayCourses = ({courses, input}) => {
                             <td>{course.certificate}</td>
                             <td>
                                 <button type='button'
-                                    onClick={deleteCourse()}
+                                    onClick={() => deleteCourse(course.id)}
                                     className='btn btn-danger'>
                                 <i className="fa fa-trash"></i>
                                 </button>

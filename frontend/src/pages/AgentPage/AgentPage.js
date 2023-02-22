@@ -4,8 +4,8 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import AddCourse from "../../components/AddCourse/AddCourse";
 import DisplayCourses from "../../components/DisplayCourses/DisplayCourses"
-import SearchCourses from "../../components/SearchCourses/SearchCourses"
-import CreditTotals from "../../components/CreditTotals/CreditTotals";
+// import SearchCourses from "../../components/SearchCourses/SearchCourses"
+// import CreditTotals from "../../components/CreditTotals/CreditTotals";
 // import Emailjs from "../../components/Emailjs/Emailjs";
 
 
@@ -21,13 +21,19 @@ function AgentPage() {
     }, []);
 
     async function getAllCourses(){
-        const response = await axios.get('http://127.0.0.1:8000/api/ce_log/agent/', {
-            headers: {
-            Authorization: 'Bearer ' + token
-            }
-        });
-        console.log(response.data);
-        setCourses(response.data)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/ce_log/agent/', 
+            {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                },
+            });
+            console.log(response.data);
+            setCourses(response.data)
+        } catch (error) {
+            console.log(error.response)
+        }
+
     }
 
     return (  
@@ -36,9 +42,9 @@ function AgentPage() {
             <h1>Welcome {user.first_name} {user.last_name}</h1>
             <br></br>
             <AddCourse getAllCourses={getAllCourses}/>
-            <SearchCourses input = {searchTerm} setInput = {setSearchTerm}/>
+            {/* <SearchCourses input = {searchTerm} setInput = {setSearchTerm}/> */}
             <DisplayCourses courses = {courses} input = {searchTerm}/> 
-            <CreditTotals />           
+            {/* <CreditTotals courses={courses} />            */}
         </div>
     );
 }
