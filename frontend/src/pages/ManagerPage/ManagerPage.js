@@ -36,7 +36,7 @@ const ManagerPage = () => {
         <div className='container'>
             <h1>Welcome {user.first_name} {user.last_name}</h1>
             {/* <SearchCourses courses = {courses} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} /> */}
-            <ManagerCourses courses = {courses} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} user = {user}/>      
+            <ManagerCourses courses = {courses} setCourses = {setCourses} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} />      
         </div>
 
      );

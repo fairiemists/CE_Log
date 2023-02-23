@@ -1,7 +1,7 @@
 
 
 
-const ManagerCourses = ({courses, searchTerm, setSearchTerm}) => {
+const ManagerCourses = ({courses, setCourses, searchTerm, setSearchTerm}) => {
 
     function handleSubmit(e)  {
         e.preventDefault();
@@ -9,18 +9,15 @@ const ManagerCourses = ({courses, searchTerm, setSearchTerm}) => {
         courses.filter(course=>
             course.agent_first_name.includes(searchTerm) ||
             course.agent_last_name.includes(searchTerm)       
-            )
-            .map((course) =>
-            course.agent_first_name &&
-            course.agent_last_name
             ); 
-        setSearchTerm(response)
+        // setSearchTerm(response)
+        setCourses(response)
         console.log(response)
     }
 
     return ( 
         <div>
-            <form onSubmit={handleSubmit} action="/" method="get">
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     id="header-search"
