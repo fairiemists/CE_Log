@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import useAuth from '../../hooks/useAuth';
 import ManagerCourses from '../../components/ManagerCourses/ManagerCourses';
-import SearchCourses from '../../components/SearchCourses/SearchCourses';
+// import SearchCourses from '../../components/SearchCourses/SearchCourses';
 
 
 const ManagerPage = () => {
@@ -35,8 +35,8 @@ const ManagerPage = () => {
     return ( 
         <div className='container'>
             <h1>Welcome {user.first_name} {user.last_name}</h1>
-            <SearchCourses input = {searchTerm} setInput = {setSearchTerm}/>
-            <ManagerCourses courses = {courses} input = {searchTerm} user = {user}/>      
+            {/* <SearchCourses courses = {courses} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} /> */}
+            <ManagerCourses courses = {courses} searchTerm = {searchTerm} setSearchTerm = {setSearchTerm} user = {user}/>      
         </div>
 
      );

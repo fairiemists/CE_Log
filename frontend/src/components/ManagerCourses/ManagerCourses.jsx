@@ -1,11 +1,39 @@
 
 
 
-const ManagerCourses = ({courses, input}) => {
+const ManagerCourses = ({courses, searchTerm, setSearchTerm}) => {
 
+    function handleSubmit(e)  {
+        e.preventDefault();
+        let response = 
+        courses.filter(course=>
+            course.agent_first_name.includes(searchTerm) ||
+            course.agent_last_name.includes(searchTerm)       
+            )
+            .map((course) =>
+            course.agent_first_name &&
+            course.agent_last_name
+            ); 
+        setSearchTerm(response)
+        console.log(response)
+    }
 
     return ( 
         <div>
+            <form onSubmit={handleSubmit} action="/" method="get">
+                <input
+                    type="text"
+                    id="header-search"
+                    placeholder="Employee Name"
+                    name="s" 
+                    value={searchTerm} 
+                    onChange={(e) => setSearchTerm(e.target.value)}/>
+                <button type="submit" 
+                    className="search-button" 
+                    >
+                    Search
+                </button>
+            </form>            
             <table>
                 <thead>
                     <tr>
@@ -22,14 +50,14 @@ const ManagerCourses = ({courses, input}) => {
                 <tbody>
                     {courses
                     .filter(course => 
-                        course.agent_first_name.toLowerCase().includes(input.toLowerCase()) ||
-                        course.agent_last_name.toLowerCase().includes(input.toLowerCase()) ||
-                        course.course_name.toLowerCase().includes(input.toLowerCase()) ||
-                        course.course_date.toLowerCase().includes(input.toLowerCase()) ||
-                        course.cost.toLowerCase().includes(input.toLowerCase()) ||
-                        course.credits.toLowerCase().includes(input.toLowerCase()) ||
-                        course.ethics.toLowerCase().includes(input.toLowerCase()) ||
-                        course.certificate.toLowerCase().includes(input.toLowerCase())
+                        course.agent_first_name.includes(searchTerm) ||
+                        course.agent_last_name.includes(searchTerm) ||
+                        course.course_name.includes(searchTerm) ||
+                        course.course_date.includes(searchTerm)||
+                        course.cost ||
+                        course.credits.includes(searchTerm) ||
+                        course.ethics.includes(searchTerm)||
+                        course.certificate.includes(searchTerm) 
                         )
                     .map((course) => {
                         return (

@@ -2,20 +2,36 @@
 
 
 
-const SearchCourses = ({setInput, input}) => {
+const SearchCourses = ({courses, searchTerm, setSearchTerm}) => {
 
     
 
-    const handleClick = (e) => {
+    function handleSubmit(e)  {
         e.preventDefault();
-        let results = courses.filter(function(el){
-            if(el.agent_first_name && el.agent_last_name == `agent`){
-                return true;
-                
-            }
-        })
-        return results;
-      }
+        let response = 
+        courses.filter(course=>
+            course.agent_first_name.includes(searchTerm) ||
+            course.agent_last_name.includes(searchTerm)       
+            ); 
+        setSearchTerm(response)
+        console.log(response)
+
+        // let eeSearch = {
+            // {courses
+            //     .filter(course => 
+            //         course.agent_first_name ||
+            //         course.agent_last_name ||
+            //         course.course_name ||
+            //         course.course_date||
+            //         course.cost ||
+            //         course.credits ||
+            //         course.ethics||
+            //         course.certificate 
+            //         )
+            // }
+        // }
+        // setSearchTerm(e.target.value)
+    }
 
       
 
@@ -36,17 +52,19 @@ const SearchCourses = ({setInput, input}) => {
 
         <div>
 
-            <form action="/" method="get">
-                <label htmlFor="header-search">
-                    <span className="visually-hidden">Employee</span>
-                </label>
+            <form onSubmit={handleSubmit} action="/" method="get">
                 <input
                     type="text"
                     id="header-search"
                     placeholder="Employee Name"
                     name="s" 
-                />
-                <button type="submit" className="search-button" value={input} onClick={() => handleClick()}>Search</button>
+                    value={searchTerm} 
+                    onChange={(e) => setSearchTerm(e.target.value)}/>
+                <button type="submit" 
+                    className="search-button" 
+                    >
+                    Search
+                </button>
             </form>
 
 
