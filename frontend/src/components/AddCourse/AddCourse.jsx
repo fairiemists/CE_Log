@@ -6,36 +6,39 @@ import useCustomForm from "../../hooks/useCustomForm";
 
 // const [user] = useAuth()
 
-let initialValues = {
-    agent_first_name: user.first_name,
-    agent_last_name: user.last_name,
-    course_name: "",
-    course_date: "", 
-    cost: "", 
-    credits: "",
-    ethics: "",
-    certificate: "",
-};
+// let initialValues = {
+//     agent_first_name: user.first_name,
+//     agent_last_name: user.last_name,
+//     course_name: "",
+//     course_date: "", 
+//     cost: "", 
+//     credits: "",
+//     ethics: "",
+//     certificate: "",
+// };
 
 
 const AddCourse = () => {
     const [user, token] = useAuth()
-    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCourse)
 
-    // let initialValues = {
-    //     agent_first_name: user.first_name,
-    //     agent_last_name: user.last_name,
-    //     course_name: "",
-    //     course_date: "", 
-    //     cost: "", 
-    //     credits: "",
-    //     ethics: "",
-    //     certificate: "",
-    // };
+    let initialValues = {
+        agent_first_name: user.first_name,
+        agent_last_name: user.last_name,
+        course_name: "",
+        course_date: "", 
+        cost: "", 
+        credits: "",
+        ethics: false,
+        certificate: "",
+    };
+
+    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCourse)
 
 
     async function postNewCourse(){
         console.log(formData)
+        formData.agent_first_name = user.first_name
+        formData.agent_last_name = user.last_name
 
         try {
             let response = await axios.post("http://127.0.0.1:8000/api/ce_log/agent/", formData, {

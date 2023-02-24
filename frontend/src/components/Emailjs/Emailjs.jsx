@@ -1,76 +1,36 @@
+import React, { useRef } from 'react';
+import emailjs from 'emailjs-com';
 
+export const Emailjs = () => {
+  const form = useRef();
 
+  const sendEmail = (e) => {
+    e.preventDefault();
 
+    emailjs.sendForm('contact_service', 'contact_form', form.current, 'ZQU_YEi73ji1tN76DLdCZ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      form.current.reset()
+  };
 
-
-const Emailjs = () => {
-
-    const btn = document.getElementById('button');
-
-    document.getElementById('form')
-     .addEventListener('submit', function(event) {
-       event.preventDefault();
-    
-       btn.value = 'Sending...';
-    
-       const serviceID = 'default_service';
-       const templateID = 'contact_form';
-    
-       emailjs.sendForm(serviceID, templateID, this)
-        .then(() => {
-          btn.value = 'Send Email';
-          alert('Sent!');
-        }, (err) => {
-          btn.value = 'Send Email';
-          alert(JSON.stringify(err));
-        });
-    });
-
-
-    return ( 
-        <div>
-            <form id="form">
-                <div class="field">
-                    <label for="from_name">from_name</label>
-                    <input type="text" name="from_name" id="from_name"/>
-                </div>
-                <div class="field">
-                    <label for="first_name">first_name</label>
-                    <input type="text" name="first_name" id="first_name"/>
-                </div>
-                <div class="field">
-                    <label for="total_credits">total_credits</label>
-                    <input type="text" name="total_credits" id="total_credits"/>
-                </div>
-                <div class="field">
-                    <label for="total_ethics">total_ethics</label>
-                    <input type="text" name="total_ethics" id="total_ethics"/>
-                </div>
-                <div class="field">
-                    <label for="user_email">user_email</label>
-                    <input type="text" name="user_email" id="user_email"/>
-                </div>
-                <div class="field">
-                    <label for="reply_to">reply_to</label>
-                    <input type="text" name="reply_to" id="reply_to"/>
-                </div>
-
-                <input type="submit" id="button" value="Send Email" />
-                </form>
-
-                <script type="text/javascript"
-                src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-                <script type="text/javascript">
-                emailjs.init('pdrQnWDOb7HvG1zJG')
-                </script>
-        </div>
-    );
-
-}
- 
-export default Emailjs;
-
-
+  return (
+    <form ref={form} onSubmit={sendEmail}>
+      <label>Name</label>
+      <input type="text" name="from_name" />
+      <label>Email</label>
+      <input type="email" name="user_email" />
+      <label>First Name</label>
+      <input type="text" name="first_name" />
+      <label>Credits</label>
+      <input type="number" name="total_credits" />   
+      <label>Ethics</label>
+      <input type="number" name="total_ethics" />
+      <input type="submit" value="Send" />
+    </form>
+  );
+};
 
 

@@ -12,4 +12,4 @@ class Credit(models.Model):
     cost = models.DecimalField(decimal_places=2, max_digits=8)
     credits = models.IntegerField()
     ethics = models.BooleanField(default=False)
-    certificate = models.ImageField(blank=True)
+    certificate = models.ImageField(null=True)
