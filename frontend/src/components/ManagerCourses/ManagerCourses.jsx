@@ -15,6 +15,7 @@ const ManagerCourses = ({courses, setCourses, searchTerm, setSearchTerm}) => {
         console.log(response)
     }
 
+
     return ( 
         <div>
             <form onSubmit={handleSubmit}>

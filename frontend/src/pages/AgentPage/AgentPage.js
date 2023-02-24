@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import AddCourse from "../../components/AddCourse/AddCourse";
 import DisplayCourses from "../../components/DisplayCourses/DisplayCourses"
 // import SearchCourses from "../../components/SearchCourses/SearchCourses"
-// import CreditTotals from "../../components/CreditTotals/CreditTotals";
+import CreditTotals from "../../components/CreditTotals/CreditTotals";
 // import Emailjs from "../../components/Emailjs/Emailjs";
 
 
@@ -44,7 +44,7 @@ function AgentPage() {
             <AddCourse getAllCourses={getAllCourses}/>
             {/* <SearchCourses input = {searchTerm} setInput = {setSearchTerm}/> */}
             <DisplayCourses courses = {courses} input = {searchTerm}/> 
-            {/* <CreditTotals courses={courses} />            */}
+            <CreditTotals courses={courses} />           
         </div>
     );
 }

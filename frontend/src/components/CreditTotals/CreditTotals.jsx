@@ -1,73 +1,56 @@
-import React, { useState } from 'react';
+
+const CreditTotals = ({courses, setCourses}) => {
 
 
-// import "./CreditTotals.css";
+  const creditFilter = courses.filter((course) => course.credits);
+  console.log(creditFilter);
 
-// const [requiredCompleted, setRequiredCompleted] = useState(e);
-// const [totalEthics, setTotalEthics] = useState(e);
-// const [requiredRemaining, setRequiredRemaining] = useState(e);
+  const credits = courses.map((course) => course.credits);
+  console.log(credits);
 
+  const totalCredits = credits.reduce((total, credit) => {
+    console.log(`Total: ${total}`)
+    console.log(`Item: ${credits}`)
+    return total + credit
+  }, 0)
+  console.log(totalCredits);
 
-
-
-
-// function findAgentCredits(){
-//   let results = courses.credits.map(function(el){
-//     return `${el.user_id} ${el.credits}`
-//   })
-//   return results;
-// }
-
-// let requiredCompleted = findAgentCredits()
-// console.log(requiredCompleted)
+  const remainingCredits = 16 - totalCredits
+  console.log(remainingCredits)
 
 
-// reduce(function (accumulator, currentValue) { /* … */ }, initialValue)
+  const totalEthics = 
+    courses
+      .filter((course) => course.ethics &&
+        course.credits)
+      .map((course) => course.credits)
+      .reduce((total, credits) => {
+       return total + credits
+       }, 0)
+    console.log(totalEthics);
+  
 
-const CreditTotals = ({courses}) => {
+  let optionalCompleted = totalCredits - 16 
+      optionalCompleted = optionalCompleted < 0 ? 0 : optionalCompleted;
+  console.log(optionalCompleted)
 
-  // const total = props.course.credits.reduce(
-  //   (prevValue, currentValue) => prevValue + currentValue.course, 0
-  // );
 
-  return (
-
-    // <p>Required Completed: {total}</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Required Completed</th>
-                <th>Required Remaining</th>
-                <th>Ethics Remaining</th>
-                <th>Optional Completed</th>
-            </tr>
-        </thead>
-        <tbody>
-          {/* {courses
-          .filter(course =>
-            course.user_id === current_displayed_agent
-          )
-          .reduce((prevValue, currentValue) => 
-            prevValue + currentValue.course, 0
-          )
-          .map((course) => {
-            return (
-            <tr key={course.id}>
-              <td>{course.credits}</td>
-
-            </tr>
-            );
-          })
-          } */}
-            {/* <output>{requiredCompleted}</output>
-            <output>{requiredRemaining}</output>
-            <output>{totalEthics}</output>
-            <output>{totalOptional}</output> */}
-    //     </tbody>
-    // </table>    
-
+  return (  
+    <div>
+      <p>
+        <span>Required Completed: </span>
+        <span> {totalCredits} </span>
+        <span>Required Remaining: </span>
+        <span> {remainingCredits} </span>
+      </p>
+      <p>  
+        <span>Ethics Completed: </span>
+        <span> {totalEthics} </span>
+        <span>Optional Completed: </span>
+        <span> {optionalCompleted} </span>
+      </p>
+    </div>
   );
-};
-
+}
+ 
 export default CreditTotals;

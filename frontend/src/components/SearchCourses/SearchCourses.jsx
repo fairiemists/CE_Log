@@ -13,8 +13,8 @@ const SearchCourses = ({courses, searchTerm, setSearchTerm}) => {
             course.agent_first_name.includes(searchTerm) ||
             course.agent_last_name.includes(searchTerm)       
             ); 
-        setSearchTerm(response)
-        console.log(response)
+            setCourses(response)
+            console.log(response)
 
         // let eeSearch = {
             // {courses
