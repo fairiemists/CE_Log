@@ -4,7 +4,11 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 
+// const [user] = useAuth()
+
 let initialValues = {
+    agent_first_name: user.first_name,
+    agent_last_name: user.last_name,
     course_name: "",
     course_date: "", 
     cost: "", 
@@ -18,7 +22,21 @@ const AddCourse = () => {
     const [user, token] = useAuth()
     const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewCourse)
 
+    // let initialValues = {
+    //     agent_first_name: user.first_name,
+    //     agent_last_name: user.last_name,
+    //     course_name: "",
+    //     course_date: "", 
+    //     cost: "", 
+    //     credits: "",
+    //     ethics: "",
+    //     certificate: "",
+    // };
+
+
     async function postNewCourse(){
+        console.log(formData)
+
         try {
             let response = await axios.post("http://127.0.0.1:8000/api/ce_log/agent/", formData, {
                 headers: {
@@ -34,6 +52,28 @@ const AddCourse = () => {
     return (  
         <form className="form" onSubmit={handleSubmit}>
             <div className="form-row">
+            <div className="form-group col-md-3">
+                    <label>
+                        Agent First Name: {" "}
+                        <input
+                            type="text"
+                            name="agent_first_name"
+                            value={formData.agent_first_name} 
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
+                <div className="form-group col-md-3">
+                    <label>
+                        Agent Last Name: {" "}
+                        <input
+                            type="text"
+                            name="agent_last_name"
+                            value={formData.agent_last_name} 
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                </div>
                 <div className="form-group col-md-3">
                     <label>
                         Course Name: {" "}
