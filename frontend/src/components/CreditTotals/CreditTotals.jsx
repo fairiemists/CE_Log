@@ -15,7 +15,8 @@ const CreditTotals = ({courses, setCourses}) => {
   }, 0)
   console.log(totalCredits);
 
-  const remainingCredits = 16 - totalCredits
+  let remainingCredits = 16 - totalCredits
+  remainingCredits = remainingCredits < 0 ? 0 : remainingCredits;
   console.log(remainingCredits)
 
 

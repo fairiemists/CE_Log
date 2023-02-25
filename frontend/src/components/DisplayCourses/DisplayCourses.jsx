@@ -1,18 +1,26 @@
 
 // Write verification for delete function. 
-
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 
 
-const DisplayCourses = ({courses, input}) => {
+const DisplayCourses = ({courses, input, getAllCourses}) => {
 
-    let id = courses.id
+    const [user, token] = useAuth();
 
-    async function deleteCourse(){
-        const response = await axios.delete(`http://127.0.0.1:8000/api/ce_log/${id}/`);
+
+    async function deleteCourse(id){
+        const response = await axios.delete(`http://127.0.0.1:8000/api/ce_log/${id}/`,{ 
+        headers: {
+            Authorization: "Bearer " + token,
+          }});
         console.log(response.data);
+        await getAllCourses();
     }
+
+
+
 
     return ( 
         <div>
@@ -45,7 +53,7 @@ const DisplayCourses = ({courses, input}) => {
                             <td>{course.course_date}</td>
                             <td>{course.cost}</td>
                             <td>{course.credits}</td>
-                            <td>{course.ethics}</td>
+                            <td inert='inert'>{course.ethics}</td>
                             <td>{course.certificate}</td>
                             <td>
                                 <button type='button'

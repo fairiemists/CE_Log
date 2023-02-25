@@ -42,7 +42,7 @@ function AgentPage() {
             <br></br>
             <AddCourse getAllCourses={getAllCourses}/>
             {/* <Emailjs /> */}
-            <DisplayCourses courses = {courses} input = {searchTerm}/> 
+            <DisplayCourses courses = {courses} input = {searchTerm} getAllCourses = {getAllCourses}/> 
             <CreditTotals courses={courses} />           
         </div>
     );

@@ -1,9 +1,13 @@
 from rest_framework import status
+from rest_framework import permissions
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Credit
+from .models import MyModel
 from .serializers import CreditSerializer
+from .serializers import MyModelSerializer
 from django.shortcuts import get_object_or_404
 
 @api_view(['GET', 'POST'])
@@ -52,7 +56,15 @@ def employee_credits(request):
         return Response(serializer.data)
 
 
-
+# class MyModelViewSet(viewsets.ModelViewSet):
+#     queryset = MyModel.objects.order_by('-creation_date')
+#     serializer_class = MyModelSerializer
+#     parser_classes = (MultiPartParser, FormParser)
+#     permission_classes = [
+#         permissions.IsAuthenticatedOrReadOnly]
+    
+#     def perform_create(self, serializer):
+#         serializer.save(creator=self.request.user)
 
 
 
